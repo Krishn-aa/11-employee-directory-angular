@@ -1,0 +1,253 @@
+<!-- Add Eployee -->
+<div class="add-employee-container">
+  <h1>Add Employee</h1>
+  <form [formGroup]="employeeForm" id="employeeForm" class="employee-form">
+    <div class="profile-image-container flex" id="profileImageContainer">
+      <div class="default-profile-photo flex">
+        <img
+          *ngIf="this.employee?.profilePicture; else defaultImage"
+          [src]="this.employee?.profilePicture"
+          alt="User Profile"
+          id="profileImagePreview"
+        />
+
+        <ng-template #defaultImage>
+          <img
+            [src]="'assets/user-profile.png'"
+            alt="Default User Image"
+            id="profileImagePreview"
+          />
+        </ng-template>
+      </div>
+      <label for="uploadPicture" class="upload-profile-pic-btn">
+        Upload Profile Picture
+      </label>
+      <input
+        class="add-employee-input"
+        type="file"
+        id="uploadPicture"
+        name="profileImage"
+        accept="image/*"
+        formControlName="profilePicture"
+      />
+    </div>
+    <div class="employee-detail-form">
+      <div class="employee-form-profile-details">
+        <div class="personal-information-container">
+          <h2>Personal Information</h2>
+          <div class="personal-information">
+            <div class="flex">
+              <div class="input-field-container">
+                <label for="empNo">Emp No</label>
+                <input
+                  class="add-employee-input"
+                  type="text"
+                  id="empNo"
+                  name="empNo"
+                  placeholder="Text"
+                  value="{{ newEmployeeId }}"
+                  formControlName="empId"
+                  readonly
+                />
+                <span class="error-message"></span>
+              </div>
+            </div>
+
+            <div class="flex">
+              <div class="input-field-container">
+                <label for="firstName">First Name</label>
+                <input
+                  class="add-employee-input"
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Text"
+                  formControlName="firstName"
+                  [readonly]="isViewEmployeePage()"
+                />
+                <span class="error-message"></span>
+              </div>
+              <div class="input-field-container">
+                <label for="lastName">Last Name</label>
+                <input
+                  class="add-employee-input"
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Text"
+                  formControlName="lastName"
+                  [readonly]="isViewEmployeePage()"
+                />
+
+                <span class="error-message"></span>
+              </div>
+              <div class="input-field-container">
+                <label for="dob">Date of Birth</label>
+                <input
+                  class="add-employee-input"
+                  placeholder="Select"
+                  type="date"
+                  id="dob"
+                  name="dob"
+                  class="date-input"
+                  formControlName="dob"
+                  [readonly]="isViewEmployeePage()"
+                />
+              </div>
+            </div>
+            <div class="flex">
+              <div class="input-field-container">
+                <label for="email">Email Id</label>
+                <input
+                  class="add-employee-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Joe.j@Technover.com"
+                  formControlName="email"
+                  [readonly]="isViewEmployeePage()"
+                />
+                <span class="error-message"></span>
+              </div>
+              <div class="input-field-container">
+                <label for="mobNumber">Mobile Number</label>
+                <input
+                  class="add-employee-input"
+                  type="text"
+                  id="mobNumber"
+                  name="mobNumber"
+                  placeholder="0000000000"
+                  title="pls input only numbers"
+                  formControlName="phoneno"
+                  [readonly]="isViewEmployeePage()"
+                />
+                <span class="error-message"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="employment-information-container">
+          <h2>Employment Information</h2>
+          <div class="employment-information">
+            <div class="flex">
+              <div class="input-field-container">
+                <label for="joinDate"> Joining Date</label>
+                <input
+                  class="add-employee-input"
+                  type="date"
+                  id="joinDate"
+                  name="joinDate"
+                  formControlName="joiningDate"
+                  [readonly]="isViewEmployeePage()"
+                />
+                <span class="error-message"></span>
+              </div>
+              <div class="input-field-container">
+                <label for="department">Department</label>
+                <select
+                  class="add-employee-select-inputs"
+                  id="department"
+                  name="department"
+                  formControlName="department"
+                  (change)="onDepartmentChange($event)"
+                  [disabled]="isViewEmployeePage()"
+                >
+                  <option value="" hidden>Search</option>
+                  <option
+                    *ngIf="isViewEmployeePage()"
+                    [value]="employee?.department"
+                  >
+                    {{ employee?.department }}
+                  </option>
+                  <ng-container *ngIf="!isViewEmployeePage()">
+                    <option
+                      *ngFor="let department of departments"
+                      [value]="department.name"
+                    >
+                      {{ department.name }}
+                    </option>
+                  </ng-container>
+                </select>
+                <span class="error-message"></span>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="input-field-container">
+                <label for="roleName">Job Title</label>
+                <select
+                  class="add-employee-select-inputs"
+                  id="roleName"
+                  name="roleName"
+                  formControlName="jobTitle"
+                  (change)="onJobTitleChange($event)"
+                  [disabled]="isViewEmployeePage()"
+                >
+                  <option value="search" hidden>Search</option>
+                  <option
+                    *ngIf="isViewEmployeePage()"
+                    [value]="employee?.role"
+                  >
+                    {{ employee?.role }}
+                  </option>
+                  <option *ngFor="let jobTitle of jobTitles" [value]="jobTitle">
+                    {{ jobTitle }}
+                  </option>
+                </select>
+                <span class="error-message"></span>
+              </div>
+
+              <div class="input-field-container">
+                <label for="location">Location</label>
+                <select
+                  class="add-employee-select-inputs"
+                  id="location"
+                  name="location"
+                  formControlName="location"
+                  [disabled]="isViewEmployeePage()"
+                >
+                  <option value="search" hidden>Search</option>
+                  <option *ngIf="isViewEmployeePage()" value="" [value]="employee?.location">{{employee?.location}}</option>
+                  <option *ngFor="let location of locations" [value]="location">
+                    {{ location }}
+                  </option>
+                </select>
+                <span class="error-message"></span>
+              </div>
+            </div>
+
+            <div class="flex">
+              <div class="input-field-container">
+                <label for="managerName">Assign Manager</label>
+                <select
+                  class="add-employee-select-inputs"
+                  id="managerName"
+                  name="managerName"
+                  formControlName="manager"
+                >
+                  <option value="" hidden>Search</option>
+                </select>
+                <span class="error-message"></span>
+              </div>
+              <div class="input-field-container">
+                <label for="projectName">Assign Project</label>
+                <select
+                  class="add-employee-select-inputs"
+                  id="projectName"
+                  name="projectName"
+                  formControlName="project"
+                >
+                  <option value="" hidden>Search</option>
+                </select>
+                <span class="error-message"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-buttons">
+            <button type="cancel" onclick="cancelAddEmployee()">Cancel</button>
+            <button id="submit-button" type="submit">Add Employee</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

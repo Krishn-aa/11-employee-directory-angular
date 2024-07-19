@@ -1,0 +1,44 @@
+.page-header-btn-add-role {
+    display: flex;
+    justify-content: center;
+    gap: 6%;
+    background-color: #f44848;
+    border: none;
+    color: white;
+    border-radius: 0.5rem;
+    align-items: center;
+    width: 10rem;
+    height: 2.6rem;
+  }
+  
+  /* Add roles buttons */
+  
+  .add-role-buttons {
+    position: absolute;
+    right: 0%;
+    bottom: 10%;
+  }
+  
+  .add-role-btn {
+    margin: 20px;
+    width: 130px;
+    opacity: 80%;
+    background-color: white;
+    font-weight: 500;
+    color: #4c5c72;
+    padding: 8px 14px;
+    border: 1px solid red;
+    border-radius: 5px;
+  }
+  
+  .add-role-btn {
+    color: white;
+    background-color: red;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    border: none;
+    background-color: #ffc4c4;
+    color: red;
+  }

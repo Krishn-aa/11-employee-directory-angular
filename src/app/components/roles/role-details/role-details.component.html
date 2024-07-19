@@ -1,0 +1,72 @@
+  <!-- Roles Header -->
+  <div class="page-header">
+    <div class="page-header-content">
+      <div class="employee-header-content-title">
+        Roles
+        <i class="fa-solid fa-angle-right"></i>
+        Employees
+      </div>
+
+      <div class="employee-header-content-desc">
+        All the roles are configured here.
+      </div>
+    </div>
+
+    <button class="page-header-btn-add-employee" (click)="handleAddEmployee()">
+      <img src="assets/interface/add.svg" alt="" />
+      <p>ADD EMPLOYEE</p>
+    </button>
+  </div>
+
+  <!-- Role Description -->
+  <div class="role-description" *ngIf="role">
+    <p class="role-desc-heading">{{ role.name }}</p>
+    <p class="role-desc-content">
+      {{ role.description }}
+    </p>
+  </div>
+
+  <div class="roles-card-section">
+    <div *ngFor="let employee of employees">
+      <div class="roles-card">
+        <div class="roles-card-profile flex">
+          <img
+            [src]="employee.profilePicture"
+            alt="profile-pic"
+            class="role-detail-profile-img"
+          />
+
+          <div>
+            <p class="profile-detail-name">{{ employee.firstName }} {{ employee.lastName }}</p>
+            <p class="profile-detail-postion">
+              Head of {{employee.department }}
+            </p>
+          </div>
+        </div>
+
+        <div class="role-profile-details">
+          <div class="role-profile-detail-row flex">
+            <img src="assets/inf-id.svg" alt="" />
+            <p>{{ employee.id }}</p>
+          </div>
+          <div class="role-profile-detail-row flex">
+            <img src="assets/email-logo.svg" alt="" />
+            <p>{{ employee.email }}</p>
+          </div>
+          <div class="role-profile-detail-row flex">
+            <img src="assets/employees-icon.svg" alt="" />
+            <p>{{ employee.department }}</p>
+          </div>
+          <div class="role-profile-detail-row flex">
+            <img src="assets/location-icon.svg" alt="" />
+            <p>{{ employee.location }}</p>
+          </div>
+        </div>
+        
+        <div class="roles-card-bottom flex">
+          <button [routerLink]="['/addEmployee',employee.id]">View</button>
+          <img src="assets/right-arrow-icon.svg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>

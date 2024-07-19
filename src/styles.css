@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  accent-color: red;
+}
+
+.hide {
+  display: none !important;
+}
+
+.main-panel {
+  position: relative;
+  margin: 1% 2%;
+  height: 96vh;
+}
+.side-panel-collapse-btn {
+  position: absolute;
+  width: 3%;
+  top: 2%;
+  left: -4%;
+  transform: rotate(0deg);
+}
+
+.side-panel-collapse-btn.collapsed {
+  transform: rotate(180deg);
+}
+
+/* Additional styles for hidden elements when collapsed */
+.collapsed .hide {
+  display: none;
+}

@@ -1,0 +1,43 @@
+/* Roles Header */
+.page-header {
+  margin: 1% 0% 1% 0%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 2% 0%;
+  gap: 1%;
+  height: 100px;
+  flex-wrap: wrap;
+}
+
+.page-header-content {
+  margin-right: auto;
+}
+
+.page-header-content-title {
+  padding-bottom: 2%;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #4c5c72;
+  opacity: 90%;
+}
+
+.page-header-content-desc {
+  font-size: 1rem;
+  opacity: 50%;
+  font-weight: 500;
+  color: #4c5c72;
+}
+
+.page-header-btn-add-role {
+  display: flex;
+  justify-content: center;
+  gap: 6%;
+  background-color: #f44848;
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  align-items: center;
+  width: 10rem;
+  height: 2.6rem;
+}

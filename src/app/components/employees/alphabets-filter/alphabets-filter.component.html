@@ -1,0 +1,16 @@
+<!-- Filter Alphabets-->
+<div class="filter">
+  <img
+    src="assets/interface/filter.svg"
+    class="remove-filter-btn"
+    alt="filter"
+    (click)="manageResetAlphabetFilter()"
+  />
+  <div class="filter-alphabets flex">
+    <div
+      *ngFor="let char of alphabets"
+      class="filter-alphabets-div selectedAlphabets"
+      (click)="manageEmployeeFilter($event)"
+    >{{char}}</div>
+  </div>
+</div>

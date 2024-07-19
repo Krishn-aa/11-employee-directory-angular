@@ -1,0 +1,65 @@
+<!-- Filters -->
+<div class="filter-options flex">
+  <div class="filter-columns flex">
+    <div><p class="filter-options-title">Filter</p></div>
+    <img src="assets/filter-sort.png" alt="" />
+
+    <div class="filter-option-container" *ngIf="!isRolesPage()">
+      <div #status class="placeholder" (click)="showFilterDropdown(status)" >
+        <div class="filter-options-btn">
+          <p class="status">Status</p>
+          <i class="fa-solid fa-angle-down"></i>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="drop-down-menu status"  (click)="manageEmployeeFilter($event)">Active</div>
+        <div class="drop-down-menu status"  (click)="manageEmployeeFilter($event)">Inactive</div>
+      </div>
+    </div>
+
+    <div class="filter-option-container">
+      <div #location class="placeholder" (click)="showFilterDropdown(location)">
+        <div class="filter-options-btn">
+          <p class="location">Location</p>
+          <i class="fa-solid fa-angle-down"></i>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div *ngFor="let loc of locations;"
+          class="drop-down-menu location"
+          (click)="isRolesPage() ? manageRoleFilter($event) : manageEmployeeFilter($event)"
+        >{{loc.name}}</div>
+      </div>
+    </div>
+    
+    <div class="filter-option-container">
+      <div #department class="placeholder" (click)="showFilterDropdown(department)">
+        <div class="filter-options-btn">
+          <p class="department">Department</p>
+          <i class="fa-solid fa-angle-down"></i>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div *ngFor="let departement of departments"
+          class="drop-down-menu department"
+          (click)="isRolesPage() ? manageRoleFilter($event) : manageEmployeeFilter($event)"
+        >{{departement.name}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button
+      class="filter-options-btn filter-options-reset"
+      (click)="manageResetFilterBtn()"
+    >
+      Reset
+    </button>
+    <button
+      class="filter-options-btn filter-options-apply"
+      (click)="manageApplyFilterBtn()"
+    >
+      Apply
+    </button>
+  </div>
+</div>

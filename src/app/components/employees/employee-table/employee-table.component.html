@@ -1,0 +1,107 @@
+<!-- Employee Table -->
+<div class="employee-table-section">
+  <div class="employee-table-section-header flex">
+    <div class="employee-table-section-header-del flex">
+      <img
+        src="assets/interface/arrow-turn-left-down.svg"
+        alt="arrow-turn-left-down"
+      />
+      <button class="btn-delete" onclick="deleteAllEmployees()">Delete</button>
+    </div>
+
+    <div class="employee-table-section-header-table-add">
+      <img src="assets/table-add.png" alt="table-add" />
+    </div>
+  </div>
+  <div class="employee-rows-section">
+    <table class="employee-table">
+      <thead>
+        <tr class="employee-table-row employee-table-row-heading">
+          <th>
+            <label
+              ><input
+                type="checkbox"
+                name="check"
+                id="check-box"
+                class="row-checkbox first-checkbox"
+                onchange="manageEmployeeDeletion(this,undefined)"
+            /></label>
+          </th>
+          <th (click)="manageTableSorting('user')">
+            USER <i class="fa-solid fa-sort sort-btn"></i>
+          </th>
+          <th (click)="manageTableSorting('location')">
+            LOCATION <i class="fa-solid fa-sort sort-btn"></i>
+          </th>
+          <th (click)="manageTableSorting('department')">
+            DEPARTMENT <i class="fa-solid fa-sort sort-btn"></i>
+          </th>
+          <th (click)="manageTableSorting('role')">
+            ROLE <i class="fa-solid fa-sort sort-btn"></i>
+          </th>
+          <th (click)="manageTableSorting('emp-no')">
+            EMP NO <i class="fa-solid fa-sort sort-btn"></i>
+          </th>
+          <th (click)="manageTableSorting('status')">
+            STATUS <i class="fa-solid fa-sort sort-btn"></i>
+          </th>
+          <th (click)="manageTableSorting('join-date')">
+            JOIN DT <i class="fa-solid fa-sort sort-btn"></i>
+          </th>
+          <th>...</th>
+        </tr>
+      </thead>
+
+      <tbody class="employee-table-data">
+        <tr *ngFor="let emp of tableData" class="employee-table-row">
+          <td>
+            <label>
+              <input
+                type="checkbox"
+                name="check"
+                class="row-checkbox"
+                (change)="manageEmployeeDeletion($event, emp.id)"
+              />
+            </label>
+          </td>
+          <td>
+            <div class="table-user">
+              <img [src]="emp.profilePicture" alt="user-profile-pic" />
+              <div>
+                <p class="user-profile-name">
+                  {{ emp.firstName }} {{ emp.lastName }}
+                </p>
+                <p class="user-profile-email">{{ emp.email }}</p>
+              </div>
+            </div>
+          </td>
+          <td>{{ emp.location }}</td>
+          <td>{{ emp.department }}</td>
+          <td>{{ emp.role }}</td>
+          <td>{{ emp.id }}</td>
+          <td>
+            <div
+              class="status-btn"
+              [ngClass]="{ active: emp.status === 'Active' }"
+            >
+              Active
+            </div>
+          </td>
+          <td>{{ emp.joinDate | date }}</td>
+          <td>
+            <div class="ellipsis" (click)="showEllipsisMenu($event)"  [ngClass]="{'active': !isEllipsisOpen}">
+              <div class="ellipsis-icon">
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+              <div class="ellipsis-menu">
+                <div (click)="viewDetails(emp.id)">View Details</div>
+                <div (click)="editDetails(emp.id)">Edit</div>
+                <div (click)="deleteFromEllipsisMenu(emp.id)">Delete</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

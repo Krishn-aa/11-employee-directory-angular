@@ -1,0 +1,69 @@
+/* Employees Header */
+.page-header {
+  margin: 1% 0% 1% 0%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 2% 0%;
+  gap: 1%;
+  height: 100px;
+  flex-wrap: wrap;
+}
+
+.page-header-content {
+  margin-right: auto;
+}
+
+.page-header-content-title {
+  padding-bottom: 2%;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #4c5c72;
+  opacity: 90%;
+}
+
+.page-header-content-desc {
+  font-size: 1rem;
+  opacity: 50%;
+  font-weight: 500;
+  color: #4c5c72;
+}
+
+.page-header-btn-export {
+  display: flex;
+  justify-content: center;
+  background: white;
+  gap: 10%;
+  align-items: center;
+  border: 1px solid#a7a9ab;
+  border-radius: 0.5rem;
+  height: 90%;
+  width: 13%;
+}
+
+.page-header-btn-export p {
+  font-size: 1rem;
+  color: #4c5c72;
+  font-weight: 500;
+  opacity: 70%;
+}
+
+.page-header-btn-add-employee {
+  display: flex;
+  justify-content: center;
+  background-color: #f44848;
+  border: none;
+  color: white;
+  gap: 10%;
+  border-radius: 0.5rem;
+  align-items: center;
+  width: 18%;
+  height: 90%;
+}
+
+.page-header-btn-add-employee p {
+  color: white;
+  opacity: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+}

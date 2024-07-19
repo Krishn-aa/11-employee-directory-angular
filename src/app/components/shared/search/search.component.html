@@ -1,0 +1,40 @@
+<!-- Search Header -->
+<div class="header-search">
+  <div class="header-search-section flex">
+    <img
+      src="assets/bx-search.png"
+      class="header-search-search-icon"
+      alt="search"
+    />
+    <input
+      type="text"
+      id="searchbar"
+      class="header-search-box"
+      placeholder="Search (Ctrl+/)"
+      (keydown)="searchEmployee()"
+    />
+  </div>
+  <div class="header-search-icons flex">
+    <img src="assets/vertical-nav/language.svg" alt="lang" />
+    <img src="assets/vertical-nav/categories.svg" alt="category" />
+    <img src="assets/vertical-nav/mode.svg" alt="darkmode" />
+    <img
+      src="assets/vertical-nav/notifications.svg"
+      alt="notifications"
+    />
+    <div class="header-search-profile">
+      <img
+        src="assets/profle-pic.png"
+        alt="profile-pic"
+        class="header-profile-img"
+      />
+
+      <div class="header-search-profile-desc">
+        <p class="header-profile-name">John Abraham</p>
+        <p class="header-profile-admin">Admin</p>
+      </div>
+
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+  </div>
+</div>

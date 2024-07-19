@@ -1,0 +1,43 @@
+<!-- role.component.html -->
+<div class="roles-card-section">
+  <div *ngFor="let role of roleCardsData" class="roles-card">
+    <div class="roles-card-header flex">
+      <p class="roles-card-header-title">{{ role.name }}</p>
+    </div>
+    <div class="roles-card-content">
+      <div class="roles-card-content-div flex">
+        <div class="flex">
+          <img src="assets/employees-icon.svg" alt="" />
+          <p>Department</p>
+        </div>
+        <div>
+          <p class="department">{{ role.department }}</p>
+        </div>
+      </div>
+      <div class="roles-card-content-div flex">
+        <div class="flex">
+          <img src="assets/location-icon.svg" alt="" />
+          <p>Location</p>
+        </div>
+        <div>
+          <p class="location">{{ role.location }}</p>
+        </div>
+      </div>
+      <div class="roles-card-content-div flex">
+        <div class="flex">
+          <p>Total Employees</p>
+        </div>
+        <div class="roles-card-total-employees-card" >
+          <!-- Images will be populated here -->
+          {{role.employeeIds.length}}
+        </div>
+      </div>
+    </div>
+    <div class="roles-card-bottom flex">
+      <button [routerLink]="['/roleDetails', role.id]" class="flex">
+        <p>View all Employees</p>
+        <img src="assets/right-arrow-icon.svg" alt="" />
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<!-- Side Panel -->
+<div class="side-panel" [class.collapsed]="isCollapsed">
+  <!-- Toggle Button -->
+  <button (click)="toggleSidePanel()" class="side-panel-collapse-btn">
+    <i class="fa"></i>
+  </button>
+
+  <!-- Logo-->
+  <div class="side-panel-header">
+    <img src="assets/tezo-logo.svg" class="logo-img" alt="tezo-logo" />
+  </div>
+
+  <div class="side-panel-content">
+    <!-- All -->
+    <div class="side-panel-section">
+      <div class="side-panel-heading">
+        ALL
+        <hr class="side-panel-bar" />
+      </div>
+
+      <div class="side-panel-section-selector">
+        <div class="side-panel-header-container active">
+          <div class="svg-container">
+            <img
+              src="assets/horizontal-nav/dashboard-black.svg"
+              alt=""
+              class="svg-image svg-black"
+            />
+          </div>
+          <p class="side-panel-title" *ngIf="!isCollapsed">Dashboard</p>
+        </div>
+      </div>
+
+      <div class="side-panel-section-selector">
+        <a routerLink="/">
+          <div class="side-panel-header-container" [class.side-panel-active-selector]="isActiveLink('employees')">
+            <div class="svg-container">
+              <img src="assets/horizontal-nav/employees-{{getSvgLink('employees')}}.svg"
+                
+                alt="employees"
+              />
+            </div>
+            <p class="side-panel-title" *ngIf="!isCollapsed">Employees</p>
+            <div class="pseudo-side-bar" *ngIf="isActiveLink('employees')"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Roles -->
+    <div class="side-panel-section">
+      <div class="side-panel-heading">
+        <hr class="side-panel-bar" />
+        ROLE / USER MANAGEMENT
+      </div>
+      <div class="side-panel-section-selector">
+        <a routerLink="/roles">
+          <div class="side-panel-header-container" [class.side-panel-active-selector]="isActiveLink('roles')">
+            <div class="svg-container">
+              <img
+                src="assets/horizontal-nav/roles-{{getSvgLink('roles')}}.svg"
+                alt=""
+              />
+            </div>
+            <p class="side-panel-title" *ngIf="!isCollapsed">Roles</p>
+            <i class="fa-solid fa-chevron-right side-panel-logo-right" [class.active]="isActiveLink('roles')" *ngIf="!isCollapsed"></i>
+            <div class="pseudo-side-bar" *ngIf="isActiveLink('roles')"></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="side-panel-section-selector">
+        <div class="side-panel-header-container">
+          <div class="svg-container">
+            <img
+              src="assets/horizontal-nav/assign-user-black.svg"
+              alt=""
+              class="svg-image svg-black"
+            />
+          </div>
+          <p class="side-panel-title" *ngIf="!isCollapsed">Access Rights</p>
+          <i class="fa-solid fa-chevron-right side-panel-logo-right" *ngIf="!isCollapsed"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update -->
+  <div class="side-panel-update-box" *ngIf="!isCollapsed">
+    <p class="side-panel-update-box-heading">Install new update 2.3.1A</p>
+    <p class="side-panel-update-box-desc">
+      Allow to launch the new update for the AD application
+    </p>
+    <div class="side-panel-update-box-btn-container">
+      <button class="update-btn dismiss">Dismiss</button>
+      <button class="update-btn accept">Accept</button>
+    </div>
+  </div>
+</div>
